@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3001;
 const app = express();
-require('dotenv').config({ path: '../../.env' });
+require('dotenv').config();
 app.use(bodyParser.json());
 
 const tickers = require('./routes/tickers');
