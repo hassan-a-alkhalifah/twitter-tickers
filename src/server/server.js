@@ -5,7 +5,9 @@ const app = express();
 require('dotenv').config({ path: '../../.env' });
 app.use(bodyParser.json());
 
+const tickers = require('./routes/tickers');
 const health = require('./routes/health');
+app.use('/tickers', tickers);
 app.use('/health', health);
 
 app.listen(port, () => {
