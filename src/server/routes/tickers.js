@@ -1,14 +1,36 @@
-const express = require('express');
-const router = express.Router();
 const tickerService = require('../service/tickerService');
 
-router.get('/', async (req, res) => {
-    try {
-        const bearerToken = await tickerService();
-        res.json(bearerToken);
-    } catch(error) {
-        console.error('Failed to retrieve requested ticker', error.message);
-    }
-});
+module.exports = (app, io) => {
+    let socketConnection;
 
-module.exports = router;
+    app.post('/searchTerm', async (req, res) => {
+        const term = req.body.term;
+        try {
+            const newTweetsList = await tickerService(term);
+            sendMessage(term, newTweetsList);
+            //res.json(newTweetsList);
+        } catch(error) {
+            console.error('Failed to retrieve new tweets', error.message);
+        }
+    });
+
+    app.post('/removeSearchTerm', (req, res) => {
+        const term= req.body.term;
+
+    });
+
+    io.on('connection', socket => {
+        socketConnection = socket;
+
+        socket.on('connection', () => console.log('Client connected'));
+        socket.on('disconnect', reason => console.log('Client disconnected', reason));
+    });
+
+    const sendMessage = (term, newTweetsList) => {
+        const data = {
+            term: term,
+            newTweetsList: newTweetsList
+        }
+        socketConnection.emit('tweets', data);
+    }; ///////// MAKE THIS A SERVICE
+}

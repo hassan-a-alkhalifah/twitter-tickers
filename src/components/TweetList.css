@@ -1,0 +1,40 @@
+.TweetList {
+    width: 100%;
+}
+.TweetCard {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 12px;
+    border-top: 1px solid #F6F6F6;
+}
+.TweetCard img {
+    border-radius: 50%;
+    margin-right: 12px;
+}
+.content-user-name-timestamp {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+.content-user-name-timestamp a {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+}
+.tweet-card-content {
+    width: 100%;
+}
+.timestamp {
+    width: 104px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #767676;
+}
+.content-msg {
+    color: #101010;
+    font-size: 14px;
+    line-height: 1.5;
+}

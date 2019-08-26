@@ -16,5 +16,18 @@ module.exports = {
             data: data,
             withCredentials: true
         });
+    },
+    getUpdatedTweets: term => {
+        const url = `${process.env.TWITTER_SEARCH_BASE_URL}q=${term}&count=10&result_type=recent`;
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${process.env.BEARER_TOKEN}`
+        };
+        return axios({
+            method: 'get',
+            url: url,
+            headers: headers,
+            withCredentials: true
+        });
     }
 };

@@ -1,0 +1,22 @@
+.WatchList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.WatchListItem {
+    width: calc(100% - 56px);
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 10px 14px 10px;
+    margin: 0 18px;
+}
+.WatchListItem:hover {
+    background-color: #F6F6F6;
+}
+.WatchListItem p {
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+}

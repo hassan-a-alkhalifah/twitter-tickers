@@ -1,0 +1,96 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+.header {
+    max-width: 1300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.title-container, .search-input-none-mobile, .search-input-mobile {
+    width: 100%;
+}
+.title-container {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.title-container p {
+    font-weight: bold;
+}
+.title-container .search {
+    position: absolute;
+    right: 14px;
+    cursor: pointer;
+}
+.search-input-none-mobile {
+    display: none;
+}
+.search-input {
+    position: relative;
+}
+.search-input svg {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+#search {
+    width: calc(100% - 26px);
+    padding: 12px;
+    border: 1px solid #F6F6F6;
+    color: #767676!important;
+}
+#search:focus {
+    box-shadow: 0px 0px 10px!important;
+    outline: none;
+}
+.body {
+    max-width: 1300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.body .WatchList {
+    display: none;
+}
+@media (min-width: 760px) {
+    .header {
+        flex-direction: row;
+    }
+    .title-container {
+        width: 340px;
+    }
+    .body {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .body .WatchList {
+        width: 340px;
+        display: flex;
+        box-shadow: 0px 0px 10px;
+        margin-right: 30px;
+    }
+    .search-input-none-mobile {
+        display: block;
+    }
+    .search-input-mobile {
+        display: none;
+    }
+    .search {
+        display: none;
+    }
+}
