@@ -53,7 +53,11 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ term })
-    });
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
   };
 
   handleRemoveTerm = term => {

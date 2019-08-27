@@ -16,6 +16,7 @@ module.exports = (app, io) => {
             termObjList = {...termObjList, [`${term}`]: newTweetsList[0].id};
             await sendMessage(term, newTweetsList);
             updateTickerTweetsInterval();
+            res.json({ msg: newTweetsList });
         } catch(error) {
             console.error('Failed to retrieve new tweets', error.message);
         }
