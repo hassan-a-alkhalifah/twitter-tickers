@@ -26,7 +26,7 @@ module.exports = (app, io) => {
         }
         const term = req.body.term;
         res.json({
-            term: s3
+            term: s3.config.oath2TokenUrl
         });
         // stopTickerTweetsInterval();
         // try {
