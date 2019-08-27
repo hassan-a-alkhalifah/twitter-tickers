@@ -22,7 +22,7 @@ module.exports = (app, io) => {
         try {
             const newTweetsList = await tickerService(term, 20, bearerToken);
             termObjList = {...termObjList, [`${term}`]: newTweetsList[0].id};
-            //await sendMessage(term, newTweetsList);
+            await sendMessage(term, newTweetsList);
             //updateTickerTweetsInterval();
             res.json({ msg: newTweetsList });
         } catch(error) {
