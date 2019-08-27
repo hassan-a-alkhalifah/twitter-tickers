@@ -2,6 +2,10 @@
   "name": "twitter-tickers",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.4.1",
+    "node": "10.15.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
