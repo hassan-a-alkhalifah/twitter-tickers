@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './WatchList.css';
 import WatchListItem from './WatchListItem';
 
-const WatchList = ({ savedTickerTweets, onTickerSwitch }) => {
+const WatchList = ({ savedTickerTweets, onTickerSwitch, onRemoveTerm }) => {
     return (
         <div className='WatchList'>
             {Object.keys(savedTickerTweets).map((ticker, index) => 
@@ -12,6 +12,7 @@ const WatchList = ({ savedTickerTweets, onTickerSwitch }) => {
                     tickerName={ticker}
                     noOfTweets={savedTickerTweets[ticker].length}
                     onTickerSwitch={onTickerSwitch}
+                    onRemoveTerm={onRemoveTerm}
                 />
             )}
         </div>
@@ -20,7 +21,8 @@ const WatchList = ({ savedTickerTweets, onTickerSwitch }) => {
 
 WatchList.propTypes = {
     savedTickerTweets: PropTypes.object,
-    onTickerSwitch: PropTypes.func
+    onTickerSwitch: PropTypes.func,
+    onRemoveTerm: PropTypes.func
 };
 
 export default WatchList;

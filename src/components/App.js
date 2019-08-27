@@ -55,7 +55,27 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ term })
-    });
+    })
+      .then(res => res.json())
+      .then(data => {
+        if(data.msg = 'ticker deleted successfully') {
+          const savedTickerTweets = this.state.savedTickerTweets;
+          let updatedSavedTickerTweets = {};
+          Object.keys(savedTickerTweets).map((tickerTerm) => {
+            if(tickerTerm !== term) {
+              updatedSavedTickerTweets = {...updatedSavedTickerTweets, [`${tickerTerm}`]:this.state.savedTickerTweets[tickerTerm]};
+            };
+          });
+          this.setState({
+            savedTickerTweets: updatedSavedTickerTweets,
+            currentTicker: Object.keys(updatedSavedTickerTweets).length > 0 ? Object.keys(updatedSavedTickerTweets)[0] : ''
+          }, () => {
+            if(Object.keys(this.state.savedTickerTweets).length > 0) {
+              this.handleStartTickerTweetsInterval();
+            }
+          });
+        }
+      });
   };
 
   handleTickerSwitch = term => {
@@ -68,6 +88,15 @@ class App extends Component {
     this.setState({
       searchInputDisplayed: this.state.searchInputDisplayed ? false : true
     });
+  };
+
+  handleStartTickerTweetsInterval = () => {
+    fetch('/startTickerTweetsInterval', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
   };
 
   componentDidMount() {
@@ -134,6 +163,7 @@ class App extends Component {
                     <WatchList
                       savedTickerTweets={this.state.savedTickerTweets}
                       onTickerSwitch={this.handleTickerSwitch}
+                      onRemoveTerm={this.handleRemoveTerm}
                     />
                 </div>
             :   null}
@@ -142,6 +172,7 @@ class App extends Component {
             <WatchList
               savedTickerTweets={this.state.savedTickerTweets}
               onTickerSwitch={this.handleTickerSwitch}
+              onRemoveTerm={this.handleRemoveTerm}
             />
             <TweetList 
               currentTickerList={this.state.savedTickerTweets[this.state.currentTicker]}

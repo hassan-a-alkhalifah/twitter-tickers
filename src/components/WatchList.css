@@ -6,17 +6,29 @@
     justify-content: center;
 }
 .WatchListItem {
-    width: calc(100% - 56px);
+    width: 100%;
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    padding: 14px 10px 14px 10px;
-    margin: 0 18px;
+    justify-content: center;
+    padding: 14px 0;
+    align-items: center;
+    cursor: pointer;
 }
 .WatchListItem:hover {
     background-color: #F6F6F6;
 }
+.WatchListItem .trash {
+    position: absolute;
+    left: 28px;
+    top: 29px;
+    z-index: 2;
+}
 .WatchListItem p {
     font-weight: 600;
     text-transform: uppercase;
-    cursor: pointer;
+}
+.WatchListItem p:last-child {
+    position: absolute;
+    right: 28px;
+    top: 14px;
 }

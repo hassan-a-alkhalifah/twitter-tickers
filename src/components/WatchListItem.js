@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const WatchListItem = ({ tickerName, noOfTweets, onTickerSwitch }) => {
+const WatchListItem = ({ tickerName, noOfTweets, onTickerSwitch, onRemoveTerm }) => {
     return (
-        <div className='WatchListItem'>
-            <p onClick={() => { onTickerSwitch(tickerName) }}>{tickerName}</p>
+        <div className='WatchListItem' onClick={() => { onTickerSwitch(tickerName) }}>
+            <div className='trash' onClick={() => { onRemoveTerm(tickerName) }}>
+                <FontAwesomeIcon icon='trash' />
+            </div>
+            <p>{tickerName}</p>
             <p>{noOfTweets}</p>
         </div>
     );
@@ -13,7 +17,8 @@ const WatchListItem = ({ tickerName, noOfTweets, onTickerSwitch }) => {
 WatchListItem.propTypes = {
     tickerName: PropTypes.string,
     noOfTweets: PropTypes.number,
-    onTickerSwitch: PropTypes.func
+    onTickerSwitch: PropTypes.func,
+    onRemoveTerm: PropTypes.func
 };
 
 export default WatchListItem;
