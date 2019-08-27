@@ -10,16 +10,20 @@ module.exports = (app, io) => {
 
     app.post('/searchTerm', async (req, res) => {
         const term = req.body.term;
-        stopTickerTweetsInterval();
-        try {
-            const newTweetsList = await tickerService(term, 20, bearerToken);
-            termObjList = {...termObjList, [`${term}`]: newTweetsList[0].id};
-            await sendMessage(term, newTweetsList);
-            updateTickerTweetsInterval();
-            res.json({ msg: newTweetsList });
-        } catch(error) {
-            console.error('Failed to retrieve new tweets', error.message);
-        }
+        res.json({
+            bearerToken: bearerToken,
+            term: term
+        });
+        // stopTickerTweetsInterval();
+        // try {
+        //     const newTweetsList = await tickerService(term, 20, bearerToken);
+        //     termObjList = {...termObjList, [`${term}`]: newTweetsList[0].id};
+        //     await sendMessage(term, newTweetsList);
+        //     updateTickerTweetsInterval();
+        //     res.json({ msg: newTweetsList });
+        // } catch(error) {
+        //     console.error('Failed to retrieve new tweets', error.message);
+        // }
     });
 
     app.post('/removeSearchTerm', (req, res) => {
