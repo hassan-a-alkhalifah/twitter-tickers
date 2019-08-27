@@ -25,16 +25,24 @@ class App extends Component {
 
   handleEnterKeyPress = event => {
     if(event.key === 'Enter') {
-      const term = this.state.inputField;
-      if(!this.state.savedTickerTweets.hasOwnProperty(term)) {
-        const updatedSavedTickerTweets = {...this.state.savedTickerTweets, [`${term}`]: []};
-        this.setState({
-          currentTicker: term,
-          savedTickerTweets: updatedSavedTickerTweets
-        }, () => {
-          this.handleSearchTerm(term);
-        });
-      };
+      const terms = this.state.inputField;
+      const termsArry = terms.split(",").map(item => item.trim());
+      let updatedSavedTickerTweets = this.state.savedTickerTweets;
+      termsArry.forEach(async term => {
+        try {
+          if(!this.state.savedTickerTweets.hasOwnProperty(term) && term !== " ") {
+            updatedSavedTickerTweets = {...updatedSavedTickerTweets, [`${term}`]: []};
+            await this.handleSearchTerm(term);
+          };
+        } catch(error) {
+          console.log('Failed to handle search term', error.message);
+        }
+      });
+      this.setState({
+        currentTicker: Object.keys(updatedSavedTickerTweets)[0],
+        savedTickerTweets: updatedSavedTickerTweets,
+        inputField: ''
+      });
     };
   };
 
@@ -58,10 +66,10 @@ class App extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        if(data.msg = 'ticker deleted successfully') {
+        if(data.msg === 'ticker deleted successfully') {
           const savedTickerTweets = this.state.savedTickerTweets;
           let updatedSavedTickerTweets = {};
-          Object.keys(savedTickerTweets).map((tickerTerm) => {
+          Object.keys(savedTickerTweets).forEach((tickerTerm) => {
             if(tickerTerm !== term) {
               updatedSavedTickerTweets = {...updatedSavedTickerTweets, [`${tickerTerm}`]:this.state.savedTickerTweets[tickerTerm]};
             };
@@ -79,10 +87,12 @@ class App extends Component {
   };
 
   handleTickerSwitch = term => {
-    this.setState({
-      currentTicker: term
-    });
-  }; /// FIX
+    if(term !== this.state.currentTicker) {
+      this.setState({
+        currentTicker: term
+      });
+    }
+  };
 
   handleSearchInputDisplay = () => {
     this.setState({
@@ -114,10 +124,10 @@ class App extends Component {
             });
         });
     });
-    socket.on('disconnect', () => {
+    socket.on('disconnect', reason => {
         socket.off('tweets');
         socket.removeAllListeners('tweets');
-        console.log('Socket disconnected');
+        console.log('Socket disconnected', reason);
     });
   };
 
@@ -127,6 +137,7 @@ class App extends Component {
         <input 
             id='search'
             type='text'
+            placeholder='Symbol or Symbol,Symbol for multiple'
             value={this.state.inputField}
             onKeyPress={this.handleEnterKeyPress}
             onChange={ this.handleInputChange }
@@ -164,6 +175,7 @@ class App extends Component {
                       savedTickerTweets={this.state.savedTickerTweets}
                       onTickerSwitch={this.handleTickerSwitch}
                       onRemoveTerm={this.handleRemoveTerm}
+                      currentTicker={this.state.currentTicker}
                     />
                 </div>
             :   null}
@@ -173,6 +185,7 @@ class App extends Component {
               savedTickerTweets={this.state.savedTickerTweets}
               onTickerSwitch={this.handleTickerSwitch}
               onRemoveTerm={this.handleRemoveTerm}
+              currentTicker={this.state.currentTicker}
             />
             <TweetList 
               currentTickerList={this.state.savedTickerTweets[this.state.currentTicker]}

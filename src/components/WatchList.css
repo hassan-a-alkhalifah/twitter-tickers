@@ -17,11 +17,18 @@
 .WatchListItem:hover {
     background-color: #F6F6F6;
 }
+.WatchListItem:hover .trash {
+    display: block;
+}
 .WatchListItem .trash {
+    display: none;
     position: absolute;
     left: 28px;
     top: 29px;
     z-index: 2;
+}
+.WatchListItem .trash:hover svg {
+    color: #808080;
 }
 .WatchListItem p {
     font-weight: 600;

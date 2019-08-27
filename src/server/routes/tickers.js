@@ -23,7 +23,7 @@ module.exports = (app, io) => {
         const term= req.body.term;
         let updatedTermObjList = {};
 
-        Object.keys(termObjList).map((tickerTerm) => {
+        Object.keys(termObjList).forEach((tickerTerm) => {
           if(tickerTerm !== term) {
             updatedTermObjList = {...updatedTermObjList, [`${tickerTerm}`]:termObjList[tickerTerm]};
           };
@@ -48,7 +48,7 @@ module.exports = (app, io) => {
     const updateTickerTweetsInterval = () => {
         if(tickerTweetsInterval === undefined) {
             tickerTweetsInterval = setInterval(() => {
-                Object.keys(termObjList).map(async term => {
+                Object.keys(termObjList).forEach(async term => {
                     let tweetId = termObjList[term];
                     try {
                         let updatedTickerTweetsList = await updateTickerTweets(term, tweetId, 1);

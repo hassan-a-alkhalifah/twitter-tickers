@@ -24,6 +24,7 @@
 }
 .title-container p {
     font-weight: bold;
+    font-size: 30px;
 }
 .title-container .search {
     position: absolute;
