@@ -8,6 +8,7 @@ module.exports = (app, io) => {
 
     app.post('/searchTerm', async (req, res) => {
         const term = req.body.term;
+        stopTickerTweetsInterval();
         try {
             const newTweetsList = await tickerService(term, 20);
             termObjList = {...termObjList, [`${term}`]: newTweetsList[0].id};
@@ -64,8 +65,10 @@ module.exports = (app, io) => {
     };
 
     const stopTickerTweetsInterval = () => {
-        clearInterval(tickerTweetsInterval);
-        tickerTweetsInterval = undefined;
+        if(tickerTweetsInterval !== undefined) {
+            clearInterval(tickerTweetsInterval);
+            tickerTweetsInterval = undefined;
+        };
     };
 
     const sendMessage = (term, newTweetsList) => {
