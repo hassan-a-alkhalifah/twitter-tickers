@@ -3,7 +3,7 @@ const fse = require('fs-extra');
 const envfile = require('envfile');
 const sourcePath = '.env';
 
-const tickerService = async term => {
+const tickerService = async (term, noOfTweetsToSearch) => {
     try {
         if(process.env.BEARER_TOKEN === undefined) {
             const bearerToken = await httpRequestHandler.getBearerToken();
@@ -11,10 +11,10 @@ const tickerService = async term => {
             parsedFile.BEARER_TOKEN = bearerToken.data.access_token;
             fse.writeFileSync('./.env', envfile.stringifySync(parsedFile));
         }
-        const data = await httpRequestHandler.getUpdatedTweets(term);
+        const data = await httpRequestHandler.getUpdatedTweets(term, noOfTweetsToSearch);
         return data.data.statuses;
     } catch(error) {
-        console.error(error);
+        console.error(error.message);
     }
 };
 

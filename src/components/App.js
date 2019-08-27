@@ -27,7 +27,6 @@ class App extends Component {
     if(event.key === 'Enter') {
       const term = this.state.inputField;
       if(!this.state.savedTickerTweets.hasOwnProperty(term)) {
-        console.log(`Term: ${term} added`);
         const updatedSavedTickerTweets = {...this.state.savedTickerTweets, [`${term}`]: []};
         this.setState({
           currentTicker: term,
@@ -60,7 +59,6 @@ class App extends Component {
   };
 
   handleTickerSwitch = term => {
-    console.log(term);
     this.setState({
       currentTicker: term
     });
