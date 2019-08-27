@@ -18,12 +18,12 @@ module.exports = (app, io) => {
         } catch(error) {
             console.log(error.message);
         }
-        stopTickerTweetsInterval();
+        //stopTickerTweetsInterval();
         try {
             const newTweetsList = await tickerService(term, 20, bearerToken);
             termObjList = {...termObjList, [`${term}`]: newTweetsList[0].id};
-            await sendMessage(term, newTweetsList);
-            updateTickerTweetsInterval();
+            //await sendMessage(term, newTweetsList);
+            //updateTickerTweetsInterval();
             res.json({ msg: newTweetsList });
         } catch(error) {
             console.error('Failed to retrieve new tweets', error.message);
