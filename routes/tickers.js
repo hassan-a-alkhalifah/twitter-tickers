@@ -9,14 +9,6 @@ module.exports = (app, io) => {
     let bearerToken;
 
     app.post('/searchTerm', async (req, res) => {
-        try {
-            if(bearerToken === undefined) {
-                const bearerTokenData = await httpRequestHandler.getBearerToken();
-                bearerToken = bearerTokenData.data.access_token;
-            }
-        } catch(error) {
-            console.log(error.message);
-        }
         const term = req.body.term;
         res.json({
             bearerToken: bearerToken,
@@ -53,7 +45,15 @@ module.exports = (app, io) => {
         res.json({ msg: 'interval started' });
     });
 
-    io.on('connection', socket => {
+    io.on('connection', async socket => {
+        try {
+            if(bearerToken === undefined) {
+                const bearerTokenData = await httpRequestHandler.getBearerToken();
+                bearerToken = bearerTokenData.data.access_token;
+            }
+        } catch(error) {
+            console.log(error.message);
+        }
         socketConnection = socket;
         socket.on('connection', () => console.log('Client connected'));
         socket.on('disconnect', reason => console.log('Client disconnected', reason));
