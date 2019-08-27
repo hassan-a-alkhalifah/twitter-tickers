@@ -30,7 +30,7 @@ class App extends Component {
       let updatedSavedTickerTweets = this.state.savedTickerTweets;
       termsArry.forEach(async term => {
         try {
-          if(!this.state.savedTickerTweets.hasOwnProperty(term) && term !== " ") {
+          if(!this.state.savedTickerTweets.hasOwnProperty(term) && term !== "") {
             updatedSavedTickerTweets = {...updatedSavedTickerTweets, [`${term}`]: []};
             await this.handleSearchTerm(term);
           };
@@ -141,6 +141,7 @@ class App extends Component {
             value={this.state.inputField}
             onKeyPress={this.handleEnterKeyPress}
             onChange={ this.handleInputChange }
+            required
         />
         <FontAwesomeIcon icon='search' />
     </div>;

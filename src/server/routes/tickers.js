@@ -52,7 +52,7 @@ module.exports = (app, io) => {
                     let tweetId = termObjList[term];
                     try {
                         let updatedTickerTweetsList = await updateTickerTweets(term, tweetId, 1);
-                        if(updatedTickerTweetsList !== undefined) {
+                        if(updatedTickerTweetsList != undefined) {
                             termObjList = {...termObjList, [`${term}`]: updatedTickerTweetsList[0].id};
                             await sendMessage(term, updatedTickerTweetsList);
                         }
