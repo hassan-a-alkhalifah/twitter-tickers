@@ -10,20 +10,24 @@ module.exports = (app, io) => {
 
     app.post('/searchTerm', async (req, res) => {
         const term = req.body.term;
-        res.json({
-            bearerToken: bearerToken,
-            term: term
-        });
-        // stopTickerTweetsInterval();
-        // try {
-        //     const newTweetsList = await tickerService(term, 20, bearerToken);
-        //     termObjList = {...termObjList, [`${term}`]: newTweetsList[0].id};
-        //     await sendMessage(term, newTweetsList);
-        //     updateTickerTweetsInterval();
-        //     res.json({ msg: newTweetsList });
-        // } catch(error) {
-        //     console.error('Failed to retrieve new tweets', error.message);
-        // }
+        try {
+            if(bearerToken === undefined) {
+                const bearerTokenData = await httpRequestHandler.getBearerToken();
+                bearerToken = bearerTokenData.data.access_token;
+            }
+        } catch(error) {
+            console.log(error.message);
+        }
+        stopTickerTweetsInterval();
+        try {
+            const newTweetsList = await tickerService(term, 20, bearerToken);
+            termObjList = {...termObjList, [`${term}`]: newTweetsList[0].id};
+            await sendMessage(term, newTweetsList);
+            updateTickerTweetsInterval();
+            res.json({ msg: newTweetsList });
+        } catch(error) {
+            console.error('Failed to retrieve new tweets', error.message);
+        }
     });
 
     app.post('/removeSearchTerm', (req, res) => {
@@ -46,14 +50,6 @@ module.exports = (app, io) => {
     });
 
     io.on('connection', async socket => {
-        try {
-            if(bearerToken === undefined) {
-                const bearerTokenData = await httpRequestHandler.getBearerToken();
-                bearerToken = bearerTokenData.data.access_token;
-            }
-        } catch(error) {
-            console.log(error.message);
-        }
         socketConnection = socket;
         socket.on('connection', () => console.log('Client connected'));
         socket.on('disconnect', reason => console.log('Client disconnected', reason));
