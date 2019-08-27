@@ -10,14 +10,6 @@ module.exports = (app, io) => {
 
     app.post('/searchTerm', async (req, res) => {
         const term = req.body.term;
-        try {
-            if(bearerToken === undefined) {
-                const bearerTokenData = await httpRequestHandler.getBearerToken();
-                bearerToken = bearerTokenData.data.access_token;
-            }
-        } catch(error) {
-            console.log(error.message);
-        }
         //stopTickerTweetsInterval();
         try {
             const newTweetsList = await tickerService(term, 20, bearerToken);
@@ -51,6 +43,14 @@ module.exports = (app, io) => {
 
     io.on('connection', async socket => {
         socketConnection = socket;
+        try {
+            if(bearerToken === undefined) {
+                const bearerTokenData = await httpRequestHandler.getBearerToken();
+                bearerToken = bearerTokenData.data.access_token;
+            }
+        } catch(error) {
+            console.log(error.message);
+        }
         socket.on('connection', () => console.log('Client connected'));
         socket.on('disconnect', reason => console.log('Client disconnected', reason));
     });
