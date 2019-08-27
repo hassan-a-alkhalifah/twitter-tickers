@@ -10,10 +10,10 @@ let s3 = new aws.S3({
 
 module.exports = {
     getBearerToken: () => {
-        const url = s3.oath2TokenUrl;
+        const url = s3.config.oath2TokenUrl;
         const headers = {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': `Basic ${Buffer.from(s3.consumerKey + ':' + s3.consumerSecret).toString('base64')}`
+            'Authorization': `Basic ${Buffer.from(s3.config.consumerKey + ':' + s3.config.consumerSecret).toString('base64')}`
         };
         const data = qs.stringify({ grant_type: 'client_credentials' });
         return axios({
@@ -25,7 +25,7 @@ module.exports = {
         });
     },
     getUpdatedTweets: (term, noOfTweetsToSearch, bearerToken) => {
-        const url = `${s3.twitterSearchBaseUrl}q=${term}&count=${noOfTweetsToSearch}&result_type=recent`;
+        const url = `${s3.config.twitterSearchBaseUrl}q=${term}&count=${noOfTweetsToSearch}&result_type=recent`;
         const headers = {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${bearerToken}`
