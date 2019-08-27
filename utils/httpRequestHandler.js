@@ -1,12 +1,19 @@
 const axios = require('axios');
 const qs = require('querystring');
+const aws = require('aws-sdk');
+let s3 = new aws.S3({
+    oath2TokenUrl: process.env.OAUTH2_TOKEN_URL,
+    twitterSearchBaseUrl: process.env.TWITTER_SEARCH_BASE_URL,
+    consumerKey: process.env.CONSUMER_KEY,
+    consumerSecret: process.env.CONSUMER_SECRET
+});
 
 module.exports = {
     getBearerToken: () => {
-        const url = process.env.OAUTH2_TOKEN_URL;
+        const url = s3.oath2TokenUrl;
         const headers = {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': `Basic ${Buffer.from(process.env.CONSUMER_KEY + ':' + process.env.CONSUMER_SECRET).toString('base64')}`
+            'Authorization': `Basic ${Buffer.from(s3.consumerKey + ':' + s3.consumerSecret).toString('base64')}`
         };
         const data = qs.stringify({ grant_type: 'client_credentials' });
         return axios({
@@ -17,11 +24,11 @@ module.exports = {
             withCredentials: true
         });
     },
-    getUpdatedTweets: (term, noOfTweetsToSearch) => {
-        const url = `${process.env.TWITTER_SEARCH_BASE_URL}q=${term}&count=${noOfTweetsToSearch}&result_type=recent`;
+    getUpdatedTweets: (term, noOfTweetsToSearch, bearerToken) => {
+        const url = `${s3.twitterSearchBaseUrl}q=${term}&count=${noOfTweetsToSearch}&result_type=recent`;
         const headers = {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.BEARER_TOKEN}`
+            'Authorization': `Bearer ${bearerToken}`
         };
         return axios({
             method: 'get',

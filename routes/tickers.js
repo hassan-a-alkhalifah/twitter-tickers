@@ -1,16 +1,18 @@
 const tickerService = require('../service/tickerService');
 const updateTickerTweets = require('../service/updateTickerTweets');
+const httpRequestHandler = require('../utils/httpRequestHandler');
 
 module.exports = (app, io) => {
     let socketConnection;
     let termObjList = {};
     let tickerTweetsInterval;
+    let bearerToken;
 
     app.post('/searchTerm', async (req, res) => {
         const term = req.body.term;
         stopTickerTweetsInterval();
         try {
-            const newTweetsList = await tickerService(term, 20);
+            const newTweetsList = await tickerService(term, 20, bearerToken);
             termObjList = {...termObjList, [`${term}`]: newTweetsList[0].id};
             await sendMessage(term, newTweetsList);
             updateTickerTweetsInterval();
@@ -38,9 +40,16 @@ module.exports = (app, io) => {
         res.json({ msg: 'interval started' });
     });
 
-    io.on('connection', socket => {
+    io.on('connection', async socket => {
+        try {
+            if(bearerToken === undefined) {
+                const bearerTokenData = await httpRequestHandler.getBearerToken();
+                bearerToken = bearerTokenData.data.access_token;
+            }
+        } catch(error) {
+            console.log(error.message);
+        }
         socketConnection = socket;
-
         socket.on('connection', () => console.log('Client connected'));
         socket.on('disconnect', reason => console.log('Client disconnected', reason));
     });
@@ -51,7 +60,7 @@ module.exports = (app, io) => {
                 Object.keys(termObjList).forEach(async term => {
                     let tweetId = termObjList[term];
                     try {
-                        let updatedTickerTweetsList = await updateTickerTweets(term, tweetId, 1);
+                        let updatedTickerTweetsList = await updateTickerTweets(term, tweetId, 1, bearerToken);
                         if(updatedTickerTweetsList != undefined) {
                             termObjList = {...termObjList, [`${term}`]: updatedTickerTweetsList[0].id};
                             await sendMessage(term, updatedTickerTweetsList);
