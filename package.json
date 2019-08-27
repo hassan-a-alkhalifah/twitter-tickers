@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "twitter-tickers",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,13 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "engines": {
-    "npm": "6.4.1",
-    "node": "10.15.0"
-  },
   "dependencies": {
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
