@@ -43,7 +43,9 @@ class App extends Component {
         savedTickerTweets: updatedSavedTickerTweets,
         inputField: ''
       }, () => {
-        currentTicker: Object.keys(this.state.savedTickerTweets)[Object.keys(this.state.savedTickerTweets).length - 1]
+        this.setState({
+          currentTicker: Object.keys(this.state.savedTickerTweets)[Object.keys(this.state.savedTickerTweets).length - 1]
+        });
       });
     };
   };
