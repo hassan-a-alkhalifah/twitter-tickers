@@ -3,7 +3,7 @@
     height: 100%;
 }
 .TweetList > div {
-    overflow: scroll;
+    overflow: auto;
     height: 100%;
 }
 .TweetList > div > div {
