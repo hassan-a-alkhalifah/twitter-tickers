@@ -5,17 +5,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const WatchListItem = ({ tickerName, noOfTweets, onTickerSwitch, onRemoveTerm, currentTicker }) => {
     
     
-    const WatchListItemStyles = {
-        'backgroundColor': tickerName === currentTicker && '#F6F6F6'
+    const WatchListItemFocusStyles = {
+        'color': tickerName === currentTicker && 'rgba(30,53,37,.5)'
     };
 
     return (
-        <div className='WatchListItem' style={WatchListItemStyles} onClick={() => { onTickerSwitch(tickerName) }}>
+        <div className='WatchListItem' onClick={() => { onTickerSwitch(tickerName) }}>
             <div className='trash' onClick={() => { onRemoveTerm(tickerName) }}>
                 <FontAwesomeIcon icon='times' />
             </div>
-            <p>{tickerName}</p>
-            <p>{noOfTweets}</p>
+            <p style={WatchListItemFocusStyles}>{tickerName}</p>
+            <p style={WatchListItemFocusStyles}>{noOfTweets}</p>
         </div>
     );
 };
