@@ -5,6 +5,6 @@ import App from './components/App';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faSearch, faTimes, faTrash);
+library.add(faSearch, faTimes, faTrash, faTimes);
 
 ReactDOM.render(<App />, document.getElementById('root'));

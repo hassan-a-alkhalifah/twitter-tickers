@@ -12,7 +12,7 @@ const WatchListItem = ({ tickerName, noOfTweets, onTickerSwitch, onRemoveTerm, c
     return (
         <div className='WatchListItem' style={WatchListItemStyles} onClick={() => { onTickerSwitch(tickerName) }}>
             <div className='trash' onClick={() => { onRemoveTerm(tickerName) }}>
-                <FontAwesomeIcon icon='trash' />
+                <FontAwesomeIcon icon='times' />
             </div>
             <p>{tickerName}</p>
             <p>{noOfTweets}</p>
