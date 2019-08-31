@@ -60,7 +60,7 @@
 }
 .search-input svg {
     position: absolute;
-    right: 10px;
+    left: 10px;
     top: 12px;
 }
 input:-webkit-autofill,
@@ -70,8 +70,8 @@ input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 #search {
-    width: calc(100% - 26px);
-    padding: 12px;
+    width: calc(100% - 50px);
+    padding: 12px 12px 12px 35px;
     border: 0;
     color: #767676!important;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);

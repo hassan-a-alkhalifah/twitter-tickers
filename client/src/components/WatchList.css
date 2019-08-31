@@ -49,8 +49,3 @@
     font-weight: 600;
     text-transform: uppercase;
 }
-.WatchListItem p:last-child {
-    position: absolute;
-    right: 28px;
-    top: 14px;
-}
