@@ -6,6 +6,7 @@ import TweetCard from './TweetCard';
 const TweetList = ({ currentTickerList, savedTickerTweets }) => {
         let tweetCards = 
         <div>
+            <p>Watchlist</p>
             {Object.keys(savedTickerTweets).length > 0
                 ? currentTickerList.map((tweetData, index) => {
                 return <TweetCard 

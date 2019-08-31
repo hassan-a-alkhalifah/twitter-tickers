@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    background-color: #7c9aff;
+    background: #9cb8b3;
     padding-bottom: 30px;
     position: fixed;
     top: 0;
@@ -36,8 +36,16 @@
     padding: 30px 0;
 }
 .title-container p {
-    font-weight: bold;
-    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    font-style: normal;
+    padding-top: 0.1em;
+    text-shadow: 0.07em 0.07em 0 rgba(0, 0, 0, 0.1);
+    color: #efedce;
 }
 .title-container .search {
     position: absolute;
@@ -75,7 +83,7 @@ input:-webkit-autofill:active  {
 .body {
     width: 100vw;
     display: flex;
-    background-color: #84b9ec;
+    background-color: rgba(30, 53, 37, 0.5);
     margin-top: 170px;
     height: calc(100vh - 170px);
     overflow: hidden;
