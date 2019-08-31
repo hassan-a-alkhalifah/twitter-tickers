@@ -1,6 +1,20 @@
 .WatchList {
     flex-direction: column;
 }
+.WatchList > p {
+    font-weight: 600;
+    text-transform: uppercase;
+    background: #9cb8b3;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.36);
+    color: #efedce;
+    text-shadow: 0.07em 0.07em 0 rgba(0,0,0,.1);
+    font-size: 30px;
+    font-family: Roboto,sans-serif;
+}
 .WatchList, .WatchListItem {
     width: 100%;
     display: flex;
@@ -12,6 +26,7 @@
     padding: 14px 0;
     cursor: pointer;
     justify-content: center;
+    border-bottom: 1px solid rgba(0,0,0,.10);
 }
 .WatchListItem:hover {
     background-color: #F6F6F6;
