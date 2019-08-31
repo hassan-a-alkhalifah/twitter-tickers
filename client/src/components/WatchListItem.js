@@ -6,7 +6,7 @@ const WatchListItem = ({ tickerName, noOfTweets, onTickerSwitch, onRemoveTerm, c
     
     
     const WatchListItemFocusStyles = {
-        'color': tickerName === currentTicker && 'rgba(30,53,37,.5)'
+        'color': tickerName === currentTicker && '#000'
     };
 
     return (

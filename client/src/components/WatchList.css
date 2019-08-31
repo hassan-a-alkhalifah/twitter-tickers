@@ -48,4 +48,5 @@
 .WatchListItem p {
     font-weight: 600;
     text-transform: uppercase;
+    color: rgba(30,53,37,.5);
 }
