@@ -161,30 +161,33 @@ class App extends Component {
             }}
         />
         <div className='header'>
-            <div className='title-container'>
-                <p>Twitter Tickers</p>
-                <div className='search' onClick={ this.handleSearchInputDisplay }>
-                    {this.state.searchInputDisplayed 
-                        ? <FontAwesomeIcon icon='times' />
-                        : <FontAwesomeIcon icon='search' />}
-                </div>
+            <div>
+              <div className='title-container'>
+                  <p>Twitter Tickers</p>
+                  <div className='search' onClick={ this.handleSearchInputDisplay }>
+                      {this.state.searchInputDisplayed 
+                          ? <FontAwesomeIcon icon='times' />
+                          : <FontAwesomeIcon icon='search' />}
+                  </div>
+              </div>
+              <div className='search-input-none-mobile'>
+                  {searchControls}
+              </div>
+              {this.state.searchInputDisplayed
+              ?   <div className='search-input-mobile'>
+                      {searchControls}
+                      <WatchList
+                        savedTickerTweets={this.state.savedTickerTweets}
+                        onTickerSwitch={this.handleTickerSwitch}
+                        onRemoveTerm={this.handleRemoveTerm}
+                        currentTicker={this.state.currentTicker}
+                      />
+                  </div>
+              :   null}
             </div>
-            <div className='search-input-none-mobile'>
-                {searchControls}
-            </div>
-            {this.state.searchInputDisplayed
-            ?   <div className='search-input-mobile'>
-                    {searchControls}
-                    <WatchList
-                      savedTickerTweets={this.state.savedTickerTweets}
-                      onTickerSwitch={this.handleTickerSwitch}
-                      onRemoveTerm={this.handleRemoveTerm}
-                      currentTicker={this.state.currentTicker}
-                    />
-                </div>
-            :   null}
         </div>
         <div className='body'>
+          <div>
             <WatchList
               savedTickerTweets={this.state.savedTickerTweets}
               onTickerSwitch={this.handleTickerSwitch}
@@ -195,6 +198,7 @@ class App extends Component {
               currentTickerList={this.state.savedTickerTweets[this.state.currentTicker]}
               savedTickerTweets={this.state.savedTickerTweets}
             />
+          </div>
         </div>
       </div>
     );
