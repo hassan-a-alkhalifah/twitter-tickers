@@ -110,6 +110,11 @@ input:-webkit-autofill:active  {
 .body .WatchList {
     display: none;
 }
+@media (max-width: 429px) {
+    .title-container p {
+        font-size: 20px;
+    }
+}
 @media (min-width: 760px) {
     .App {
         padding: 0 30px;
