@@ -13,9 +13,10 @@
     background: #9cb8b3;
     position: fixed;
     top: 0;
-    height: 102px;
+    height: auto;
     border-bottom: 0 none;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+    z-index: 2;
 }
 .header > div {
     max-width: 1300px;
@@ -56,9 +57,15 @@
 .search-input {
     position: relative;
 }
+.search-input-mobile .search-input {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
 .search-input svg {
     position: absolute;
-    left: 10px;
+    left: 45px;
     top: 12px;
 }
 input:-webkit-autofill,
@@ -68,7 +75,7 @@ input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 #search {
-    width: calc(100% - 50px);
+    width: calc(100% - 117px);
     padding: 12px 12px 12px 35px;
     border: 0;
     color: #767676!important;
@@ -93,7 +100,7 @@ input:-webkit-autofill:active  {
     width: calc(100% - 60px);
     display: flex;
     position: relative;
-    height: calc(100vh - 226px);
+    height: calc(100vh - 163px);
     align-items: stretch;
 }
 .body .WatchList {
@@ -118,6 +125,7 @@ input:-webkit-autofill:active  {
     }
     .body > div {
         width: 100%;
+        height: calc(100vh - 226px);
     }
     .body .WatchList {
         width: 340px;
@@ -135,5 +143,11 @@ input:-webkit-autofill:active  {
     }
     .search {
         display: none;
+    }
+    #search {
+        width: calc(100% - 50px);
+    }
+    .search-input svg {
+        left: 10px;
     }
 }
