@@ -151,7 +151,9 @@ class App extends Component {
             onChange={ this.handleInputChange }
             required
         />
-        <FontAwesomeIcon icon='search' />
+        <div id='input-search-icon' onClick={() => { this.handleEnterKeyPress() }}>
+          <FontAwesomeIcon icon='search' />
+        </div>
     </div>;
 
     return (
