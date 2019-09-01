@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const TweetList = ({ currentTickerList, savedTickerTweets }) => {
         let tweetCards = 
         <div>
-            {currentTickerList.length > 0
+            {currentTickerList && currentTickerList.length > 0
                 ? currentTickerList.map((tweetData, index) => {
                 return <TweetCard 
                     key={index}
