@@ -7,6 +7,7 @@ const WatchList = ({ savedTickerTweets, onTickerSwitch, onRemoveTerm, currentTic
     return (
         <div className='WatchList'>
             <p>Watchlist</p>
+            <div>
             {Object.keys(savedTickerTweets).map((ticker, index) => 
                 <WatchListItem 
                     key={index}
@@ -17,6 +18,7 @@ const WatchList = ({ savedTickerTweets, onTickerSwitch, onRemoveTerm, currentTic
                     currentTicker={currentTicker}
                 />
             )}
+            </div>
         </div>
     );
 };

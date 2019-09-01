@@ -6,9 +6,9 @@
     overflow: auto;
     height: 100%;
 }
-.TweetList > div > div {
+/* .TweetList > div > div {
     padding: 0 5px;
-}
+} */
 .noTweetsMsg {
     padding: unset!important;
     display: flex;
@@ -25,8 +25,8 @@
 .TweetCard {
     display: flex;
     align-items: flex-start;
-    padding: 30px 25px;
-    margin-bottom: 30px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
     background-color: rgba(255, 255, 255, 0.99);
     border-bottom: 0 none;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);

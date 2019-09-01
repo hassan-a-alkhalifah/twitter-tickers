@@ -21,7 +21,7 @@
 .header > div {
     max-width: 1300px;
     width: 100%;
-    padding: 0 30px;
+    padding: 0 10px;
 }
 .title-container, .search-input-none-mobile, .search-input-mobile {
     width: 100%;
@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 30px 0;
+    padding: 10px 0;
 }
 .title-container p {
     font-size: 28px;
@@ -63,7 +63,7 @@
     width: 100vw;
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 .search-input svg {
     position: absolute;
@@ -92,19 +92,19 @@ input:-webkit-autofill:active  {
     width: 100vw;
     display: flex;
     background-color: rgba(30, 53, 37, 0.5);
-    margin-top: 103px;
-    height: calc(100vh - 103px);
+    margin-top: 62px;
+    height: calc(100vh - 62px);
     overflow: hidden;
     justify-content: center;
 }
 .body > div {
-    padding: 30px;
+    padding: 10px;
     max-width: 1300px;
-    width: calc(100% - 60px);
+    width: calc(100% - 20px);
     display: flex;
     position: relative;
-    height: calc(100vh - 163px);
-    align-items: stretch;
+    height: calc(100vh - 82px);
+    align-items: flex-start;
 }
 .body .WatchList {
     display: none;
@@ -116,32 +116,28 @@ input:-webkit-autofill:active  {
 }
 @media (min-width: 760px) {
     .App {
-        padding: 0 30px;
+        padding: 0 10px;
     }
     .header {
-        height: 143px;
+        height: 130px;
         flex-direction: row;
-        padding-bottom: 30px;
     }
     .body {
         flex-direction: row;
-        margin-top: 170px;
-        height: calc(100vh - 170px);
-    }
-    .title-container p {
-        font-size: 56px;
+        margin-top: 130px;
+        height: calc(100vh - 130px);
     }
     .body > div {
         width: 100%;
-        height: calc(100vh - 226px);
+        height: calc(100vh - 150px);
     }
     .body .WatchList {
         width: 340px;
         display: flex;
-        margin-right: 30px;
-        height: 100%;
-        border-bottom: 0 none;
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+        margin-right: 10px;
+        border-bottom: 0;
+        box-shadow: 0 1px 5px rgba(0,0,0,.46);
+        max-height: 100%;
     }
     .search-input-none-mobile {
         display: block;
