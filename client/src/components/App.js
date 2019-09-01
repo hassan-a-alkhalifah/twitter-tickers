@@ -25,7 +25,7 @@ class App extends Component {
 
   handleEnterKeyPress = event => {
     console.log(event);
-    if(event.key === 'Enter') {
+    if(event.key === 'Enter' || event.key === 'inputSearchIcon') {
       const terms = this.state.inputField;
       const termsArry = terms.split(",").map(item => item.trim());
       let updatedSavedTickerTweets = this.state.savedTickerTweets;
