@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './TweetList.css';
 import TweetCard from './TweetCard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const TweetList = ({ currentTickerList, savedTickerTweets }) => {
         let tweetCards = 
@@ -17,10 +18,16 @@ const TweetList = ({ currentTickerList, savedTickerTweets }) => {
             }
         </div>;
 
+        const noTweetsMsg =
+        <div className='noTweetsMsg'>
+            <FontAwesomeIcon icon='search' />
+            <p>Your search results will appear here.</p>
+        </div>;
+
         return(
             <div className='TweetList'>
                 <div>
-                    {Object.keys(savedTickerTweets).length > 0 ? tweetCards : null}
+                    {Object.keys(savedTickerTweets).length > 0 ? tweetCards : noTweetsMsg}
                 </div>
             </div>
         );

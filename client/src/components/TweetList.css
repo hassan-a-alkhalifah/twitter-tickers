@@ -9,6 +9,19 @@
 .TweetList > div > div {
     padding: 0 5px;
 }
+.noTweetsMsg {
+    padding: unset!important;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0,0,0,.46);
+    font-size: 25px;
+}
+.noTweetsMsg svg {
+    margin-right: 20px;
+}
 .TweetCard {
     display: flex;
     align-items: flex-start;
