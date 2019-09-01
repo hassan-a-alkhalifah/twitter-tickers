@@ -68,13 +68,13 @@
     justify-content: center;
     margin-bottom: 10px;
 }
-.search-input-mobile .search svg {
+.search-input-mobile .search {
     position: absolute;
     top: 71px;
     left: 45px;
     cursor: pointer;
 }
-.search-input-mobile .search svg:hover {
+.search-input-mobile .search:hover svg {
     color: #808080;
 }
 .search-input svg {
