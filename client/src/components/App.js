@@ -24,6 +24,7 @@ class App extends Component {
   };
 
   handleEnterKeyPress = event => {
+    console.log(event);
     if(event.key === 'Enter') {
       const terms = this.state.inputField;
       const termsArry = terms.split(",").map(item => item.trim());
