@@ -55,8 +55,11 @@
     color: rgba(30,53,37,.5);
 }
 @media (max-width: 429px) {
-    .WatchList>p {
+    .WatchList > p {
         font-size: 15px;
+    }
+    .WatchListItem p {
+        font-size: 12px;
     }
 }
 @media (min-width: 760px) {
@@ -67,8 +70,5 @@
         text-shadow: 0.07em 0.07em 0 rgba(0,0,0,.1);
         font-size: 30px;
         margin-bottom: 3px;
-    }
-    .WatchListItem p {
-        font-size: 12px;
     }
 }
