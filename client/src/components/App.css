@@ -74,6 +74,9 @@
     left: 45px;
     cursor: pointer;
 }
+.search-input-mobile .search svg:hover {
+    color: #808080;
+}
 .search-input svg {
     position: absolute;
     left: 45px;

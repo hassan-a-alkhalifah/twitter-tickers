@@ -70,6 +70,12 @@
     text-transform: uppercase;
     color: rgba(30,53,37,.5);
 }
+.WatchListItem p:nth-child(2) {
+    padding-left: 95px;
+}
+.WatchListItem p:nth-child(3) {
+    padding-right: 95px;
+}
 @media (max-width: 429px) {
     .WatchListItem p {
         font-size: 12px;
@@ -78,5 +84,11 @@
 @media (min-width: 760px) {
     .WatchListItem .trash {
         left: 16px;
+    }
+    .WatchListItem p:nth-child(2) {
+        padding-left: 45px;
+    }
+    .WatchListItem p:nth-child(3) {
+        padding-right: 45px;
     }
 }
