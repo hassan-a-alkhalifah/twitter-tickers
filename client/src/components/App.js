@@ -24,7 +24,6 @@ class App extends Component {
   };
 
   handleEnterKeyPress = event => {
-    console.log(event);
     if(event.key === 'Enter' || event.key === 'inputSearchIcon') {
       const terms = this.state.inputField;
       const termsArry = terms.split(",").map(item => item.trim());
@@ -149,7 +148,7 @@ class App extends Component {
         <input 
             id='search'
             type='text'
-            placeholder='Symbol or Symbol,Symbol for multiple'
+            placeholder='Search Symbol or Symbol,Symbol for multiple search results'
             value={this.state.inputField}
             onKeyPress={this.handleEnterKeyPress}
             onChange={ this.handleInputChange }

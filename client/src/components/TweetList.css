@@ -5,10 +5,8 @@
 .TweetList > div {
     overflow: auto;
     height: 100%;
+    margin-top: -3px;
 }
-/* .TweetList > div > div {
-    padding: 0 5px;
-} */
 .noTweetsMsg {
     padding: unset!important;
     display: flex;

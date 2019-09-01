@@ -14,7 +14,7 @@ const TweetList = ({ currentTickerList, savedTickerTweets }) => {
                     tweetData={tweetData}
                 />
             })
-                : null
+                : <p className='no-search-results-msg'>There are currently no search results.</p>
             }
         </div>;
 
