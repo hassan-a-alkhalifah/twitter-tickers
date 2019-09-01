@@ -58,7 +58,7 @@
 .WatchListItem .trash {
     display: none;
     position: absolute;
-    left: 16px;
+    left: 45px;
     top: 14px;
     z-index: 2;
 }
@@ -73,5 +73,10 @@
 @media (max-width: 429px) {
     .WatchListItem p {
         font-size: 12px;
+    }
+}
+@media (min-width: 760px) {
+    .WatchListItem .trash {
+        left: 16px;
     }
 }

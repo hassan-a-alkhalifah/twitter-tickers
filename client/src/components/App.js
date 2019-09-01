@@ -176,7 +176,7 @@ class App extends Component {
                   <p>Twitter Tickers</p>
                   <div className='search' onClick={ this.handleSearchInputDisplay }>
                       {this.state.searchInputDisplayed 
-                          ? <FontAwesomeIcon icon='times' />
+                          ? null
                           : <FontAwesomeIcon icon='search' />}
                   </div>
               </div>
@@ -192,6 +192,11 @@ class App extends Component {
                         onRemoveTerm={this.handleRemoveTerm}
                         currentTicker={this.state.currentTicker}
                       />
+                      <div className='search' onClick={ this.handleSearchInputDisplay }>
+                      {this.state.searchInputDisplayed 
+                          ? <FontAwesomeIcon icon='times' />
+                          : null}
+                      </div>
                   </div>
               :   null}
             </div>

@@ -7,11 +7,15 @@
     height: 100%;
     margin-top: -3px;
 }
+.TweetList > div > div {
+    height: 100%;
+}
 .noTweetsMsg {
     padding: unset!important;
     display: flex;
     height: 100%;
     width: 100%;
+    text-align: center;
     justify-content: center;
     align-items: center;
     color: rgba(0,0,0,.46);
@@ -19,6 +23,14 @@
 }
 .noTweetsMsg svg {
     margin-right: 20px;
+}
+.no-search-results-msg {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0,0,0,.46);
+    font-size: 25px;
 }
 .TweetCard {
     display: flex;
