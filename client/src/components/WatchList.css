@@ -8,7 +8,6 @@
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    margin-bottom: 3px;
     color: #000;
     font-size: 21px;
     font-family: Roboto,sans-serif;
@@ -62,5 +61,6 @@
         color: #efedce;
         text-shadow: 0.07em 0.07em 0 rgba(0,0,0,.1);
         font-size: 30px;
+        margin-bottom: 3px;
     }
 }

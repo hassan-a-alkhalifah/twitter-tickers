@@ -48,8 +48,11 @@
 }
 .title-container .search {
     position: absolute;
-    right: 14px;
+    left: 45px;
     cursor: pointer;
+}
+.title-container .search:hover svg {
+    color: #808080;
 }
 .search-input-none-mobile {
     display: none;
@@ -67,6 +70,7 @@
     position: absolute;
     left: 45px;
     top: 12px;
+    cursor: pointer;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
