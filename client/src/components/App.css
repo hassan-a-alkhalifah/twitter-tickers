@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    background: #9cb8b3;
+    background-color: #CCC;
     position: fixed;
     top: 0;
     height: auto;
@@ -36,14 +36,14 @@
 }
 .title-container p {
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     display: block;
     font-style: normal;
     padding-top: 0.1em;
     text-shadow: 0.07em 0.07em 0 rgba(0, 0, 0, 0.1);
-    color: #efedce;
+    color: #74747B;
 }
 .title-container .search {
     position: absolute;
@@ -103,16 +103,16 @@ input:-webkit-autofill:active  {
 .body {
     width: 100vw;
     display: flex;
-    background-color: rgba(30, 53, 37, 0.5);
+    background-color: #F4F4F4;
     margin-top: 62px;
     height: calc(100vh - 62px);
     overflow: hidden;
     justify-content: center;
 }
 .body > div {
-    padding: 10px;
+    padding: 10px 3px;
     max-width: 1300px;
-    width: calc(100% - 20px);
+    width: calc(100% - 10px);
     display: flex;
     position: relative;
     height: calc(100vh - 82px);
@@ -141,7 +141,9 @@ input:-webkit-autofill:active  {
     }
     .body > div {
         width: 100%;
+        width: calc(100% - 20px);
         height: calc(100vh - 150px);
+        padding: 10px;
     }
     .body .WatchList {
         width: 340px;
