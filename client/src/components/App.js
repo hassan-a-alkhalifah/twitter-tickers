@@ -45,8 +45,11 @@ class App extends Component {
         inputField: '',
       }, () => {
         this.setState({
-          currentTicker: Object.keys(this.state.savedTickerTweets)[Object.keys(this.state.savedTickerTweets).length - 1],
-          searchInputDisplayed: false
+          currentTicker: Object.keys(this.state.savedTickerTweets)[Object.keys(this.state.savedTickerTweets).length - 1]
+        }, () => {
+          this.setState({
+            searchInputDisplayed: false
+          });
         });
       });
     };
