@@ -59,11 +59,20 @@
 .search-input {
     position: relative;
 }
+.search-input-mobile {
+    position: relative;
+}
 .search-input-mobile .search-input {
     width: 100vw;
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
+}
+.search-input-mobile .search svg {
+    position: absolute;
+    top: 71px;
+    left: 45px;
+    cursor: pointer;
 }
 .search-input svg {
     position: absolute;
