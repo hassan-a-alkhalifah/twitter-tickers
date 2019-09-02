@@ -10,7 +10,7 @@ const TweetCard = ({ tweetData }) => {
                 <a href={`http://twitter.com/${tweetData.user.screen_name} target='_blank`}>{`@${tweetData.user.screen_name}`}</a>
                     <div className='timestamp'>
                         <p>{new Date(tweetData.created_at).toLocaleDateString()}</p>
-                        <p>{new Date(tweetData.created_at).toLocaleTimeString()}</p>
+                        <p>{new Date(tweetData.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
                     </div>
                 </div>
                 <p className='content-msg'>{tweetData.text}</p>
