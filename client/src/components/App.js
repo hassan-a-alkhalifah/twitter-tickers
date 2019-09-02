@@ -176,8 +176,9 @@ class App extends Component {
                   <p>Twitter Tickers</p>
                   <div className='search' onClick={ this.handleSearchInputDisplay }>
                       {this.state.searchInputDisplayed 
-                          ? Object.keys(this.state.savedTickerTweets).length > 0 ? null : <FontAwesomeIcon icon='times' />
-                          : Object.keys(this.state.savedTickerTweets).length > 0 ? <FontAwesomeIcon icon='search' /> : null}
+                          // ? Object.keys(this.state.savedTickerTweets).length > 0 ? null : <FontAwesomeIcon icon='times' />
+                          // : Object.keys(this.state.savedTickerTweets).length > 0 ? <FontAwesomeIcon icon='search' /> : null}
+                          && Object.keys(this.state.savedTickerTweets).length > 0 ? <FontAwesomeIcon icon='search' /> : null}
                   </div>
               </div>
               <div className='search-input-none-mobile'>
