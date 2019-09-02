@@ -177,13 +177,13 @@ class App extends Component {
                   <div className='search' onClick={ this.handleSearchInputDisplay }>
                       {this.state.searchInputDisplayed 
                           ? Object.keys(this.state.savedTickerTweets).length > 0 ? null : <FontAwesomeIcon icon='times' />
-                          : <FontAwesomeIcon icon='search' />}
+                          : Object.keys(this.state.savedTickerTweets).length > 0 ? <FontAwesomeIcon icon='search' /> : null}
                   </div>
               </div>
               <div className='search-input-none-mobile'>
                   {searchControls}
               </div>
-              {this.state.searchInputDisplayed
+              {this.state.searchInputDisplayed || Object.keys(this.state.savedTickerTweets).length < 0
               ?   <div className='search-input-mobile'>
                       {searchControls}
                       <WatchList
