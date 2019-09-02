@@ -183,7 +183,7 @@ class App extends Component {
               <div className='search-input-none-mobile'>
                   {searchControls}
               </div>
-              {this.state.searchInputDisplayed || Object.keys(this.state.savedTickerTweets).length < 0
+              {this.state.searchInputDisplayed || Object.keys(this.state.savedTickerTweets).length === 0
               ?   <div className='search-input-mobile'>
                       {searchControls}
                       <WatchList
