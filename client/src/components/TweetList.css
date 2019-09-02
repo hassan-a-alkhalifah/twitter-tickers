@@ -60,7 +60,7 @@
     margin-bottom: 5px;
 }
 .content-user-name-timestamp a {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     color: #000;
     text-decoration: none;
@@ -77,15 +77,6 @@
 }
 .content-msg {
     color: #101010;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.5;
-}
-@media (max-width: 429px) {
-    .content-user-name-timestamp {
-        flex-direction: column;
-        justify-content: unset;
-    }
-    .content-user-name-timestamp a {
-        margin-bottom: 10px;
-    }
 }
